@@ -38,6 +38,7 @@ const Home = () => {
   const input3 = useRef()
   const input4 = useRef()
   const input5 = useRef()
+  const dbtton=useRef()
   const boxRef = useRef()
   const handleDateChange1 = (event) => {
     setSelectedDate1(new Date(event.target.value));
@@ -73,7 +74,7 @@ const Home = () => {
     const f=input1.current
     const t=input2.current
     window.onclick = (event) => {
-      if (event.target === input5.current || r.contains(event.target)) {
+      if ((event.target === input5.current || r.contains(event.target))&&event.target!==dbtton.current) {
 
         setIsFocusc(true)
       } else {
@@ -206,14 +207,14 @@ const Home = () => {
                 {searchTo&&isFocusp&& (
         <ul className="absolute bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg shadow-gray-600 rounded-md mt-44 flex flex-col p-4 w-72 search-results">
           {filteredData.map((item) => (
-            <li onClick={()=>setTo(item)} className='bg-white bg-opacity-0 transition-all duration-300 ease-in-out hover:bg-opacity-20 hover:scale-105'>{item}</li> // Display item name (replace with your data structure)
+            <li onClick={()=>setTo(item)} className='bg-white bg-opacity-0 transition-all duration-300 ease-in-out hover:bg-opacity-20 hover:scale-105'>{item}</li>
           ))}
         </ul>)}
               </div>
             </div>
             <div className='flex flex-col mt-3 h-20 ml-3'>
               <input ref={input5} className={`relative border-2 border-purple-600 focus:outline-purple-800 text-md h-14 w-64 p-2 items-center`} type='text' readOnly value={`${tcount} Travellers | ${opt}`} />
-              <div ref={boxRef} className={`absolute flex flex-col mt-20 w-[40rem] p-4 h-72 bg-white transition-translate duration-300 ease-in-out transform ${isFocusc ? 'visible rounded-md bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg ' : 'hidden'}`}>
+              <div ref={boxRef} className={`absolute flex flex-col  mt-20 w-[40rem] p-4 h-72 rounded-md bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg transition-all duration-300 ease-in-out transform ${isFocusc ? 'block ' : 'hidden'}`}>
                 <div className='border-b-2 h-52 border-purple-400 flex flex-row'>
                   <div className='flex h-48 flex-col'>
                     <div className='flex flex-row'><div className='flex mb-3 flex-col'><h1 className='font-semibold w-24 mr-7'>Adults</h1><h2 className='text-slate-200 text-xs'>Above 12 yrs</h2></div> <button onClick={() => chmin('a')} className='w-8 h-9 border-r-0 text-4xl flex flex-row items-center justify-center pb-3 bg-white bg-opacity-5 shadow-lg hover:scale-110 hover:brightness-50'>-</button> <input className='flex flex-row h-9 w-8 text-center' readOnly value={acount}></input> <button onClick={() => { chadd('a') }} className='w-8 h-9 bg-opacity-5 bg-white shadow-xl text-2xl flex flex-row items-center hover:scale-110 hover:brightness-50 justify-center pb-2'>+</button>
@@ -238,7 +239,7 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-                <button className='w-28 text-white mt-3 self-end mr-10 bg-blue-700 h-10 rounded-3xl hover:scale-110 hover:bg-brightness-75 ' onClick={() => setIsFocusc(false)}>Done</button>
+                <button ref={dbtton} className='w-28 text-white mt-3 self-end mr-10 bg-blue-700 h-10 rounded-3xl hover:scale-110 hover:bg-brightness-75 ' >Done</button>
               </div>
             </div>
             <input type='date' className=" rounded-md border border-gray-300 h-14 w-40 ml-3 mt-3 py-2 px-3 text-gray-700 focus:outline-none focus:ring-1 focus:ring-indigo-500"
