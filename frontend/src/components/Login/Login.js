@@ -10,7 +10,7 @@ const Login = () => {
     const input1=useRef()
     const input2=useRef()
   return (
-    <div className="h-screen w-screen bg-gradient-to-r from-purple-500 to-pink-500 flex flex-row items-center justify-center ">
+    <div className="h-screen w-full bg-gradient-to-r from-purple-500 to-pink-500 flex flex-row items-center justify-center ">
       <div className="h-[75vh] w-[70vw] bg-white rounded-[2rem] shadow-2xl shadow-black flex  p-3">
           <img src={flight} className='h-full w-[28rem] rounded-l-3xl'/>
           <div className='h-full w-[22rem] ml-28 rounded-r-3xl flex flex-col justify-center items-center '>

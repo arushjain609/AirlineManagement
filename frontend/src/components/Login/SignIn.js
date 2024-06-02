@@ -13,7 +13,7 @@ const SignIn = () => {
     const input4=useRef()
   return (
     <div>
-      <div className="h-screen w-screen bg-gradient-to-r from-purple-500 to-pink-500 flex flex-row items-center justify-center ">
+      <div className="h-screen w-full bg-gradient-to-r from-purple-500 to-pink-500 flex flex-row items-center justify-center ">
       <div className="h-[80vh] w-[40vw] bg-white rounded-[2rem] shadow-2xl shadow-black flex flex-col items-center  py-5 px-3">
            <h1 className=' text-5xl mb-7'>SignIn!</h1>
            <img src={user} className='rounded-full h-20 w-20 mb-8'/>

@@ -10,6 +10,7 @@ function App() {
     <Router>
     <div className="">
       <Navbar/>
+      <div className='h-[4.2rem]'></div>
       <Routes>
       <Route exact path="/" element={<Home/>}/>
         <Route exact path="/Login" element={<Login/>}/>
