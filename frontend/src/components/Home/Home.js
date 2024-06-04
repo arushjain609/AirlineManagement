@@ -180,7 +180,7 @@ const Home = () => {
             <img src={arrow} onClick={()=>{const temp=to
               setTo(from)
               setFrom(temp)
-            }} className='absolute z-10 bg-white mt-7 ml-[13.2rem] shadow-black h-6 w-6 rounded-full transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-grey-800 hover:shadow-lg' />
+            }} className='absolute z-10 bg-white mt-7 ml-[13.2rem] shadow-black h-6 w-6 rounded-full transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-gray-600 hover:shadow-md' />
             <div ref={input2} className='flex flex-col  border-white border-l-none h-20 justify-center items-center'>
               <label className={`absolute z-10 ml-6 p-1 self-start transition-translate flex duration-300 ease-in-out transform ${isFocusp||to ? 'ml-4 mb-14 text-white rounded-3xl w-8 items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg text-xs' : ''}`}>To</label>
               <input value={to ? to:''} className=' relative p-1  focus:outline-purple-800 pl-5 border-[2px] border-purple-600 h-14 w-[14rem]' ></input>
@@ -245,7 +245,7 @@ const Home = () => {
             <input type='date' className=" rounded-md border border-gray-300 h-14 w-40 ml-3 mt-3 py-2 px-3 text-gray-700 focus:outline-none focus:ring-1 focus:ring-indigo-500"
               value={selectedDate1.toISOString().split('T')[0]}
               onChange={handleDateChange1} />
-            <input type='date' className={` rounded-md  h-14 w-0 ml-0 mt-3  text-gray-700 focus:outline-none focus:ring-1 focus:ring-indigo-500 transition-translate duration-300 ease-in-out transform ${rtrip ? 'w-40 ml-3 py-2 px-3 border border-gray-300' : ''}`}
+            <input type='date' className={` rounded-md  h-14 w-0 ml-0 mt-3  text-gray-700 focus:outline-none focus:ring-1 focus:ring-indigo-500 transition-translate duration-300 ease-in-out transform ${rtrip ? 'w-40 ml-7 py-2 px-3 border border-gray-300' : ''}`}
               value={selectedDate.toISOString().split('T')[0]}
               onChange={handleDateChange} />
             <button className='w-28 text-white mt-3 ml-3 font-semibold bg-purple-700 h-14 rounded-md hover:scale-110 hover:bg-brightness-75 ' onClick={() => setIsFocusc(false)}>Search</button>
