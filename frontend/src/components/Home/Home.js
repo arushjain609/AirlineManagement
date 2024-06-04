@@ -3,6 +3,7 @@ import { useState } from 'react'
 import home from './flightbg.jpg'
 import arrow from "./arrow.png"
 import image from './image.png'
+import Navbar from '../Navbar/Navbar'
 import { useRef } from 'react'
 import { useEffect } from 'react'
 const Home = () => {
@@ -42,11 +43,11 @@ const Home = () => {
   const boxRef = useRef()
   const handleDateChange1 = (event) => {
     setSelectedDate1(new Date(event.target.value));
-    console.log(selectedDate1.toISOString())
+    
   };
   const handleDateChange = (event) => {
     setSelectedDate(new Date(event.target.value));
-    console.log(selectedDate1.toISOString())
+    
   };
   useEffect(()=>{
     if(searchTo){
@@ -132,6 +133,8 @@ const Home = () => {
   }
 
   return (
+    <><Navbar/>
+    <div className='h-[4.2rem]'></div>
     <div className=' bg-gray-200 h-full w-full flex flex-col justify-center items-center px-2'>
       <div className={` bg-contain bg-no-repeat mt-1 w-[99vw] h-[64vh] flex flex-col justify-center items-center`} style={{ backgroundImage: `url(${home})` }} >
         <div className='w-[86vw] h-[26vh] opacity-95 p-4 bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg shadow-gray-600 rounded-md mt-52 '>
@@ -255,6 +258,7 @@ const Home = () => {
       </div>
       <img src={image} className='w-[100vw] ' />
     </div>
+    </>
   )
 }
 

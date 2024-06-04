@@ -13,7 +13,7 @@ const checkUser=asyncHandler(async(req,res)=>{
         })
     }
     const jwtToken=token.replace("Bearer ","")
-    console.log('hi')
+    
     const user=await jwt.verify(jwtToken,process.env.Secret)
     
     if(user){
