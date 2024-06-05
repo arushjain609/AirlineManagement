@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import home from './flightbg.jpg'
+import home from './flightbg5.jpg'
 import arrow from "./arrow.png"
 import image from './image.png'
 import Navbar from '../Navbar/Navbar'
@@ -136,8 +136,8 @@ const Home = () => {
     <><Navbar/>
     <div className='h-[4.2rem]'></div>
     <div className=' bg-gray-200 h-full w-full flex flex-col justify-center items-center px-2'>
-      <div className={` bg-contain bg-no-repeat mt-1 w-[99vw] h-[64vh] flex flex-col justify-center items-center`} style={{ backgroundImage: `url(${home})` }} >
-        <div className='w-[86vw] h-[26vh] opacity-95 p-4 bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg shadow-gray-600 rounded-md mt-52 '>
+    <div className="bg-cover bg-no-repeat mt-1 w-screen h-[90vh] flex flex-col justify-center items-center" style={{ backgroundImage: `url(${home})` }}>
+        <div className='w-[86vw] h-[26vh] opacity-80 p-4 bg-gradient-to-r from-orange-500 to-yellow-500 shadow-lg shadow-gray-600 rounded-md mt-52 '>
           <div className='flex flex-row'>
             <div className="flex items-center ">
               <input onClick={() => setRtrip(false)} defaultChecked type="radio" name="default-radio" className="w-4 h-4 accent-blue-600 " />
@@ -150,7 +150,7 @@ const Home = () => {
           </div>
           <div  className='relative flex mt-5 flex-row '>
             <div ref={input1} className='flex flex-col h-20 justify-center items-center'>
-              <label className={`absolute z-10 ml-6 p-1 flex self-start transition-translate duration-300 ease-in-out transform ${isFocus || from ? 'ml-4 mb-14 text-white w-12 items-center justify-center rounded-3xl bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg text-xs' : ''}`}>From</label>
+              <label className={`absolute z-10 ml-6 p-1 flex self-start transition-translate duration-300 ease-in-out transform ${isFocus || from ? 'ml-4 mb-14 text-white w-12 items-center justify-center rounded-3xl bg-gradient-to-r from-orange-500 to-yellow-500 shadow-lg text-xs' : ''}`}>From</label>
               <input value={from ? from:''} className=' focus:outline-purple-800 relative p-1 pl-5 border-[2px] border-purple-600 h-14 w-[14rem] ' ></input>
               <div className={`flex  absolute items-center w-0 transition-all -z-10 duration-300 ease-in-out transform ${isFocus? 'mt-32 ml-10 rounded-md z-10 bg-gray-100 px-3 py-2 w-72 shadow-sm ' : ''}`}>
                 <svg
@@ -185,7 +185,7 @@ const Home = () => {
               setFrom(temp)
             }} className='absolute z-10 bg-white mt-7 ml-[13.2rem] shadow-black h-6 w-6 rounded-full transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-gray-600 hover:shadow-md' />
             <div ref={input2} className='flex flex-col  border-white border-l-none h-20 justify-center items-center'>
-              <label className={`absolute z-10 ml-6 p-1 self-start transition-translate flex duration-300 ease-in-out transform ${isFocusp||to ? 'ml-4 mb-14 text-white rounded-3xl w-8 items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg text-xs' : ''}`}>To</label>
+              <label className={`absolute z-10 ml-6 p-1 self-start transition-translate flex duration-300 ease-in-out transform ${isFocusp||to ? 'ml-4 mb-14 text-white rounded-3xl w-8 items-center justify-center bg-gradient-to-r from-orange-500 to-yellow-500 shadow-lg text-xs' : ''}`}>To</label>
               <input value={to ? to:''} className=' relative p-1  focus:outline-purple-800 pl-5 border-[2px] border-purple-600 h-14 w-[14rem]' ></input>
               <div className={`flex  absolute items-center w-0 transition-all -z-10 duration-300 ease-in-out transform ${isFocusp? 'mt-32 ml-10 rounded-md z-10 bg-gray-100 px-3 py-2 w-72 shadow-sm ' : ''}`}>
                 <svg
@@ -208,7 +208,7 @@ const Home = () => {
                   onChange={(event)=>handleSearchChange(event,'t')}
                 />
                 {searchTo&&isFocusp&& (
-        <ul className="absolute bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg shadow-gray-600 rounded-md mt-44 flex flex-col p-4 w-72 search-results">
+        <ul className="absolute bg-gradient-to-r from-orange-500 to-yellow-500 shadow-lg shadow-gray-600 rounded-md mt-44 flex flex-col p-4 w-72 search-results">
           {filteredData.map((item) => (
             <li onClick={()=>setTo(item)} className='bg-white bg-opacity-0 transition-all duration-300 ease-in-out hover:bg-opacity-20 hover:scale-105'>{item}</li>
           ))}
@@ -217,7 +217,7 @@ const Home = () => {
             </div>
             <div className='flex flex-col mt-3 h-20 ml-3'>
               <input ref={input5} className={`relative border-2 border-purple-600 focus:outline-purple-800 text-md h-14 w-64 p-2 items-center`} type='text' readOnly value={`${tcount} Travellers | ${opt}`} />
-              <div ref={boxRef} className={`absolute flex flex-col  mt-20 w-[40rem] p-4 h-72 rounded-md bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg transition-all duration-300 ease-in-out transform ${isFocusc ? 'block ' : 'hidden'}`}>
+              <div ref={boxRef} className={`absolute flex flex-col  mt-20 w-[40rem] p-4 h-72 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500 shadow-lg transition-all duration-300 ease-in-out transform ${isFocusc ? 'block ' : 'hidden'}`}>
                 <div className='border-b-2 h-52 border-purple-400 flex flex-row'>
                   <div className='flex h-48 flex-col'>
                     <div className='flex flex-row'><div className='flex mb-3 flex-col'><h1 className='font-semibold w-24 mr-7'>Adults</h1><h2 className='text-slate-200 text-xs'>Above 12 yrs</h2></div> <button onClick={() => chmin('a')} className='w-8 h-9 border-r-0 text-4xl flex flex-row items-center justify-center pb-3 bg-white bg-opacity-5 shadow-lg hover:scale-110 hover:brightness-50'>-</button> <input className='flex flex-row h-9 w-8 text-center' readOnly value={acount}></input> <button onClick={() => { chadd('a') }} className='w-8 h-9 bg-opacity-5 bg-white shadow-xl text-2xl flex flex-row items-center hover:scale-110 hover:brightness-50 justify-center pb-2'>+</button>

@@ -65,10 +65,10 @@ useEffect(()=>{
   }
 
   return (
-    <div className='w-full fixed bg-gradient-to-r items-center px-5 from-purple-600 to-pink-500 h-[4.5vw] flex flex-row'>
+    <div className='w-full fixed bg-gradient-to-r items-center px-5 from-orange-600 to-yellow-500 h-[4.5vw] flex flex-row'>
       <div className='ml-36 flex flex-col'>
-        <h1 className='text-white text-2xl leading-none font-semibold'>SkyShip</h1>
-        <h2 className=' text-amber-200 text-2xl font-semibold ml-3'>Flights</h2>
+        <h1 className='text-white text-2xl leading-none font-semibold'>Wanderly</h1>
+        <h2 className=' text-amber-200 text-2xl font-semibold ml-3'>Wings</h2>
       </div>  
      <img src={logo} className='h-14 w-14 rounded-full'/>  
      <Link className='ml-10 text-blue-500' to="/">
