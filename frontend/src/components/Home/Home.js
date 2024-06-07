@@ -2,12 +2,25 @@ import React from 'react'
 import { useState } from 'react'
 import home from './flightbg5.jpg'
 import arrow from "./arrow.png"
+import api from '../API/api'
 import image from './image.png'
+import listl from './listl.svg'
 import Navbar from '../Navbar/Navbar'
 import { useRef } from 'react'
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 const Home = () => {
-  const ports=['mumbai','chennai','guwahati','up']
+  const [port,setPort]=useState({})
+  const navigate=useNavigate()
+  const ftt=async()=>{
+    const data=await api.get('/api/getall')
+    console.log(data.data[0])
+    setPort(data.data)
+  }
+  useEffect(()=>{
+    ftt()
+  },[])
+
   const [isFocus, setIsFocus] = useState(false);
   const [isFocusp, setIsFocusp] = useState(false);
   const [isFocusc, setIsFocusc] = useState(false)
@@ -49,26 +62,7 @@ const Home = () => {
     setSelectedDate(new Date(event.target.value));
     
   };
-  useEffect(()=>{
-    if(searchTo){
-      const nfilteredData = ports.filter((item) =>
-        item.toLowerCase().includes(searchTo.toLowerCase()) 
-    )
-      setFilteredData(nfilteredData)}else{
-        const nfilteredData=[]
-        setFilteredData(nfilteredData)
-      }
-    if(searchTerm){
-      const nfilteredData = ports.filter((item) =>
-        item.toLowerCase().includes(searchTerm.toLowerCase()) 
-    )
-      setFilteredData(nfilteredData)}else{
-        if(!searchTo){
-        const nfilteredData=[]
-        setFilteredData(nfilteredData)}
-      }
-      
-  },[searchTerm,searchTo])
+  
   useEffect(() => {
     
     const r = boxRef.current
@@ -131,6 +125,38 @@ const Home = () => {
     }
     setTcount(tcount + 1)
   }
+  const ft=async()=>{
+
+    if(searchTo.length>2){
+     // const ress=await mhandle.get("/",{params: {query: searchTo}})
+      //console.log(ress.data.data[0].presentation.suggestionTitle)
+      //const nfilteredData = ress.data.data.map((item) =>item.presentation.suggestionTitle)
+      const nfilteredData= port.filter((item) =>
+        item.name.toLowerCase().includes(searchTo.toLowerCase())||item.location.toLowerCase().includes(searchTo.toLowerCase())  
+    )
+      setFilteredData(nfilteredData)}else{
+        const nfilteredData=[]
+        setFilteredData(nfilteredData)
+      }
+    if(searchTerm.length>2){
+      //const ress=await mhandle.get("/",{params: {query: searchTerm}})
+      //console.log(ress.data.data[0].presentation.suggestionTitle)
+      //const nfilteredData = ress.data.data.map((item) =>item.presentation.suggestionTitle)
+      const nfilteredData= port.filter((item) =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())||item.location.toLowerCase().includes(searchTerm.toLowerCase())  
+    )
+
+      setFilteredData(nfilteredData)}else{
+        if(!searchTo){
+        const nfilteredData=[]
+        setFilteredData(nfilteredData)}
+      }
+
+  }
+
+  useEffect(()=>{
+    ft()
+  },[searchTerm,searchTo])
 
   return (
     <><Navbar/>
@@ -171,12 +197,12 @@ const Home = () => {
                   placeholder='Search..'
                   value={searchTerm}
                   onChange={(event)=>handleSearchChange(event,'f')}
+
                 />
                 {searchTerm&&isFocus&& (
-        <ul className="absolute bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg shadow-gray-600 rounded-md mt-44 flex flex-col p-4 w-72 search-results">
+        <ul className="absolute overflow-y-scroll bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg shadow-gray-600 rounded-md mt-80 h-56 flex flex-col p-4 pl-1 w-72 search-results">
           {filteredData.map((item) => (
-            <li onClick={()=>setFrom(item)} className='bg-white bg-opacity-0 transition-all duration-300 ease-in-out hover:bg-opacity-20 hover:scale-105'>{item}</li> // Display item name (replace with your data structure)
-          ))}
+            <li  onClick={()=>{setFrom(item.name); setFilteredData([]); setIsFocus(false)}} key={item._id} className='bg-white mb-1 cursor-pointer bg-opacity-0 transition-all duration-300 ease-in-out hover:bg-opacity-20 hover:scale-105'><h1><img src={listl} className='h-6 w-6 mr-1 rounded-full inline-block'/>{item.name}</h1><h4 className='ml-7 text-sm'>{item.location}</h4></li>          ))}
         </ul>)}
               </div>
             </div>
@@ -208,9 +234,9 @@ const Home = () => {
                   onChange={(event)=>handleSearchChange(event,'t')}
                 />
                 {searchTo&&isFocusp&& (
-        <ul className="absolute bg-gradient-to-r from-orange-500 to-yellow-500 shadow-lg shadow-gray-600 rounded-md mt-44 flex flex-col p-4 w-72 search-results">
+        <ul className="absolute overflow-scroll bg-gradient-to-r from-orange-500 to-yellow-500 shadow-lg shadow-gray-600 rounded-md mt-80 flex flex-col p-4 w-72 h-56 search-results">
           {filteredData.map((item) => (
-            <li onClick={()=>setTo(item)} className='bg-white bg-opacity-0 transition-all duration-300 ease-in-out hover:bg-opacity-20 hover:scale-105'>{item}</li>
+            <li onClick={()=>{setTo(item.name); setFilteredData([]); setIsFocusp(false)}} key={item._id} className='bg-white cursor-pointer mb-1 bg-opacity-0 transition-all duration-300 ease-in-out hover:bg-opacity-20 hover:scale-105'><h1><img src={listl} className='h-6 w-6 mr-1 rounded-full inline-block'/>{item.name}</h1><h4 className='text-sm'>{item.location}</h4></li>
           ))}
         </ul>)}
               </div>
@@ -245,14 +271,13 @@ const Home = () => {
                 <button ref={dbtton} className='w-28 text-white mt-3 self-end mr-10 bg-blue-700 h-10 rounded-3xl hover:scale-110 hover:bg-brightness-75 ' >Done</button>
               </div>
             </div>
-            <input type='date' className=" rounded-md border border-gray-300 h-14 w-40 ml-3 mt-3 py-2 px-3 text-gray-700 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            <input type='date' min={(new Date()).toISOString().split('T')[0]} className=" rounded-md border border-gray-300 h-14 w-40 ml-3 mt-3 py-2 px-3 text-gray-700 focus:outline-none focus:ring-1 focus:ring-indigo-500"
               value={selectedDate1.toISOString().split('T')[0]}
               onChange={handleDateChange1} />
-            <input type='date' className={` rounded-md  h-14 w-0 ml-0 mt-3  text-gray-700 focus:outline-none focus:ring-1 focus:ring-indigo-500 transition-translate duration-300 ease-in-out transform ${rtrip ? 'w-40 ml-7 py-2 px-3 border border-gray-300' : ''}`}
+            <input type='date' min={selectedDate1.toISOString().split('T')[0]} className={` rounded-md  h-14 w-0 ml-0 mt-3  text-gray-700 focus:outline-none focus:ring-1 focus:ring-indigo-500 transition-translate duration-300 ease-in-out transform ${rtrip ? 'w-40 ml-7 py-2 px-3 border border-gray-300' : ''}`}
               value={selectedDate.toISOString().split('T')[0]}
               onChange={handleDateChange} />
-            <button className='w-28 text-white mt-3 ml-3 font-semibold bg-purple-700 h-14 rounded-md hover:scale-110 hover:bg-brightness-75 ' onClick={() => setIsFocusc(false)}>Search</button>
-
+            <button onClick={()=>navigate("/flights")} className='w-28 text-white mt-3 ml-3 font-semibold bg-purple-700 h-14 rounded-md hover:scale-110 hover:bg-brightness-75 '>Search</button>
           </div>
         </div>
       </div>
