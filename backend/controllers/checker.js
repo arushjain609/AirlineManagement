@@ -1,4 +1,5 @@
 const asyncHandler=require("express-async-handler");
+
 //automatic execute try catch block as middle ware for error handling
 const jwt=require('jsonwebtoken')
 const dotenv=require("dotenv").config();
@@ -13,18 +14,26 @@ const checkUser=asyncHandler(async(req,res)=>{
         })
     }
     const jwtToken=token.replace("Bearer ","")
-    
+    console.log('hi')
     const user=await jwt.verify(jwtToken,process.env.Secret)
-    
-    if(user){
 
+    if(user){
         const userdb=await User.findOne({username:user.username})
         res.status(200).send({
             success:true,
             id:user._id,
-            username:userdb.username
+            username:userdb.username,
+            usermail:userdb.email,
+            name:userdb.name,
+            birthday:userdb.birthday,
+            travellers:userdb.travellers,
+            number:userdb.number,
+            gender:userdb.gender,
+            address:userdb.address,
+            pincode:userdb.pincode,
+            state:userdb.state,
+            image:userdb.image
         })
     }
-
 })
 module.exports={checkUser}

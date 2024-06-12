@@ -6,6 +6,7 @@ import api from '../API/api'
 import image from './image.png'
 import listl from './listl.svg'
 import Navbar from '../Navbar/Navbar'
+
 import { useRef } from 'react'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -29,6 +30,9 @@ const Home = () => {
   const [acount, setAcount] = useState(1)
   const [ccount, setCcount] = useState(0)
   const [icount, setIcount] = useState(0)
+
+  const [fiata,setFiata]=useState('')
+  const [tiata,setTiata]=useState('')
   const [from, setFrom] = useState("")
   const [to, setTo] = useState("")
   const [searchTerm, setSearchTerm] = useState("");
@@ -97,29 +101,29 @@ const Home = () => {
   }, []);
   const chmin = (e) => {
     if (tcount > 1) {
-      if (e == 'a' && acount > 0) {
+      if (e === 'a' && acount > 0) {
         setAcount(acount - 1)
 
       }
-      if (e == 'c' && ccount > 0) {
+      if (e === 'c' && ccount > 0) {
         setCcount(ccount - 1)
       }
-      if (e == 'i' && icount > 0) {
+      if (e === 'i' && icount > 0) {
         setIcount(icount - 1)
       }
       setTcount(tcount - 1)
     }
   }
   const chadd = (e) => {
-    if (e == 'a') {
+    if (e === 'a') {
       setAcount(acount + 1)
 
     }
-    if (e == 'c') {
+    if (e === 'c') {
       setCcount(ccount + 1)
 
     }
-    if (e == 'i') {
+    if (e === 'i') {
       setIcount(icount + 1)
 
     }
@@ -153,6 +157,7 @@ const Home = () => {
       }
 
   }
+
 
   useEffect(()=>{
     ft()
@@ -202,11 +207,11 @@ const Home = () => {
                 {searchTerm&&isFocus&& (
         <ul className="absolute overflow-y-scroll bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg shadow-gray-600 rounded-md mt-80 h-56 flex flex-col p-4 pl-1 w-72 search-results">
           {filteredData.map((item) => (
-            <li  onClick={()=>{setFrom(item.name); setFilteredData([]); setIsFocus(false)}} key={item._id} className='bg-white mb-1 cursor-pointer bg-opacity-0 transition-all duration-300 ease-in-out hover:bg-opacity-20 hover:scale-105'><h1><img src={listl} className='h-6 w-6 mr-1 rounded-full inline-block'/>{item.name}</h1><h4 className='ml-7 text-sm'>{item.location}</h4></li>          ))}
+            <li  onClick={()=>{setFrom(item.name); setFilteredData([]);setFiata(item.iata); setIsFocus(false)}} key={item._id} className='bg-white mb-1 cursor-pointer bg-opacity-0 transition-all duration-300 ease-in-out hover:bg-opacity-20 hover:scale-105'><h1><img src={listl} className='h-6 w-6 mr-1 rounded-full inline-block'/>{item.name}</h1><h4 className='ml-7 text-sm'>{item.location}</h4></li>          ))}
         </ul>)}
               </div>
             </div>
-            <img src={arrow} onClick={()=>{const temp=to
+            <img src={arrow} alt="" onClick={()=>{const temp=to
               setTo(from)
               setFrom(temp)
             }} className='absolute z-10 bg-white mt-7 ml-[13.2rem] shadow-black h-6 w-6 rounded-full transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-gray-600 hover:shadow-md' />
@@ -236,7 +241,7 @@ const Home = () => {
                 {searchTo&&isFocusp&& (
         <ul className="absolute overflow-scroll bg-gradient-to-r from-orange-500 to-yellow-500 shadow-lg shadow-gray-600 rounded-md mt-80 flex flex-col p-4 w-72 h-56 search-results">
           {filteredData.map((item) => (
-            <li onClick={()=>{setTo(item.name); setFilteredData([]); setIsFocusp(false)}} key={item._id} className='bg-white cursor-pointer mb-1 bg-opacity-0 transition-all duration-300 ease-in-out hover:bg-opacity-20 hover:scale-105'><h1><img src={listl} className='h-6 w-6 mr-1 rounded-full inline-block'/>{item.name}</h1><h4 className='text-sm'>{item.location}</h4></li>
+            <li onClick={()=>{setTo(item.name); setFilteredData([]);setTiata(item.iata); setIsFocusp(false)}} key={item._id} className='bg-white cursor-pointer mb-1 bg-opacity-0 transition-all duration-300 ease-in-out hover:bg-opacity-20 hover:scale-105'><h1><img src={listl} alt=""className='h-6 w-6 mr-1 rounded-full inline-block'/>{item.name}</h1><h4 className='text-sm'>{item.location}</h4></li>
           ))}
         </ul>)}
               </div>
@@ -277,11 +282,11 @@ const Home = () => {
             <input type='date' min={selectedDate1.toISOString().split('T')[0]} className={` rounded-md  h-14 w-0 ml-0 mt-3  text-gray-700 focus:outline-none focus:ring-1 focus:ring-indigo-500 transition-translate duration-300 ease-in-out transform ${rtrip ? 'w-40 ml-7 py-2 px-3 border border-gray-300' : ''}`}
               value={selectedDate.toISOString().split('T')[0]}
               onChange={handleDateChange} />
-            <button onClick={()=>navigate("/flights")} className='w-28 text-white mt-3 ml-3 font-semibold bg-purple-700 h-14 rounded-md hover:scale-110 hover:bg-brightness-75 '>Search</button>
+            <button onClick={()=>navigate(`/flights?f=${fiata}&t=${tiata}&tway=${rtrip}&p=${acount}-${ccount}-${icount}&ty=${opt}&dd=${selectedDate1.toISOString().split('T')[0]}&ad=${(selectedDate.toISOString().split('T')[0])||' '}`)} className='w-28 text-white mt-3 ml-3 font-semibold bg-purple-700 h-14 rounded-md hover:scale-110 hover:bg-brightness-75 '>Search</button>
           </div>
         </div>
       </div>
-      <img src={image} className='w-[100vw] ' />
+      <img src={image} alt="" className='w-[100vw] ' />
     </div>
     </>
   )

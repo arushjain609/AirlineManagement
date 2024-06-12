@@ -1,6 +1,6 @@
 const mongoose =require("mongoose");
 const userSchema=new mongoose.Schema({
-    
+    iata:String,
     name:String,
     location:String
 
