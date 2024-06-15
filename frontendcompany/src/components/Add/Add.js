@@ -165,44 +165,44 @@ const Add = () => {
     <>
     <Navbar/>
     <div className='h-[4.2rem]'></div>
-    {!isSeats&&<div className='w-screen justify-center items-center flex h-screen bg-gradient-to-r from-purple-500 to-pink-500'>
+    {!isSeats&&<div className='w-screen justify-center items-center flex h-screen bg-gradient-to-r from-yellow-400 to-orange-400'>
        <div className='bg-white w-[70%] rounded-lg flex flex-col'>
-       <div className='h-10 col-span-2 flex items-center rounded-t-lg px-10 text-2xl text-white font-semibold bg-gradient-to-r from-pink-500 to-purple-500'>Enter Details</div>
+       <div className='h-10 col-span-2 flex items-center rounded-t-lg px-10 text-2xl text-white font-semibold bg-gradient-to-r from-orange-500 to-yellow-400'>Enter Informations</div>
          <div className='bg-white w-[70%] rounded-lg p-10 grid gap-x-60 grid-cols-2'>
             
          <div className='w-96 h-16 flex flex-col'>
         <label className='font-semibold' for='company'>Flight Id</label>
-      <input onBlur={()=>checki()} value={id} onChange={(e)=>{setId(e.target.value)}} className='h-12 border-2 border-purple-600 rounded-md px-2 w-96' id='company' type='text' placeholder='ABC Flights' />
+      <input onBlur={()=>checki()} value={id} onChange={(e)=>{setId(e.target.value)}} className='h-12 border-2 border-orange-600 rounded-md px-2 w-96' id='company' type='text' placeholder='ABC Flights' />
       {notMsg&&<div className='text-red-500 mt-16 fixed'>ID Already in use</div>}
 
       </div>
             <div className='w-96 h-16 flex flex-col'>
         <label className='font-semibold' for='company'>Airlines Name</label>
-      <input ref={air} className='h-12 border-2 border-purple-600 rounded-md px-2 w-96' id='company' type='text' placeholder='ABC Flights' />
+      <input ref={air} className='h-12 border-2 border-orange-600 rounded-md px-2 w-96' id='company' type='text' placeholder='ABC Flights' />
       </div>
       <div className='w-96 h-16 mt-5 flex flex-col'>
         <label className='font-semibold' for='company'>Departure</label>
-      <input ref={dept} className='h-12 border-2 border-purple-600 rounded-md px-2 w-96' id='company' type='datetime-local' />
+      <input ref={dept} className='h-12 border-2 border-orange-600 rounded-md px-2 w-96' id='company' type='datetime-local' />
       </div>
       <div className='w-96 h-16 mt-5 flex flex-col'>
         <label className='font-semibold' for='company'>Duration</label>
-      <input ref={dur} className='h-12 w-96 border-2 border-purple-600 rounded-md px-2' id='company' type='time' />
+      <input ref={dur} className='h-12 w-96 border-2 border-orange-600 rounded-md px-2' id='company' type='time' />
       </div>
       <div className='w-96 h-16 mt-5 flex flex-col'>
         <label className='font-semibold' for='company'>Arrival</label>
-      <input ref={arr} className='h-12 w-96 border-2 border-purple-600 rounded-md px-2' id='company' type='datetime-local' />
+      <input ref={arr} className='h-12 w-96 border-2 border-orange-600 rounded-md px-2' id='company' type='datetime-local' />
       </div>
       <div className='w-96 h-16 mt-5 flex flex-col'>
         <label className='font-semibold' for='company'>Price</label>
-      <input ref={price} className='h-12 w-96 border-2 border-purple-600 rounded-md px-2' id='company' type='number' />
+      <input ref={price} className='h-12 w-96 border-2 border-orange-600 rounded-md px-2' id='company' type='number' />
       </div>
       <div className='w-96 h-16 mt-5 flex flex-col'>
         <label className='font-semibold' for='image'>Choose Company Logo</label>
-      <input ref={logo} value={img} onChange={(e)=>{setImg(e.target.value)}} className='h-12 border-purple-600 border-2 mt-1 w-96 ' id='image' type='text' />
+      <input ref={logo} value={img} onChange={(e)=>{setImg(e.target.value)}} className='h-12 border-orange-600 border-2 mt-1 w-96 ' id='image' type='text' />
       </div>
       <div ref={input1} className='flex ml-5 flex-col h-20 mt-3 justify-center items-center'>
       <label className='font-semibold self-start'  >From iata</label>
-                <input value={fiata ? fiata : ''} className=' focus:outline-purple-800 relative rounded-md p-1 pl-5 border-[2px] border-purple-600 h-10 w-[14rem] ' ></input>
+                <input value={fiata ? fiata : ''} className=' focus:outline-purple-800 relative rounded-md p-1 pl-5 border-[2px] border-orange-600 h-10 w-[14rem] ' ></input>
                 <div className={`flex  absolute items-center w-0 transition-all -z-10 duration-300 ease-in-out transform ${isFocus ? 'mt-32 ml-10 rounded-md z-10 bg-gray-100 px-3 py-2 w-72 shadow-sm ' : ''}`}>
                   <svg
                     className="w-5 h-5 text-gray-400 mr-2"
@@ -225,7 +225,7 @@ const Add = () => {
 
                   />
                   {searchTerm && isFocus && (
-                    <ul className="absolute overflow-y-scroll bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg shadow-gray-600 rounded-md mt-80 h-56 flex flex-col p-4 pl-1 w-72 search-results">
+                    <ul className="absolute overflow-y-scroll bg-gradient-to-r from-yellow-500 to-orange-500 shadow-lg shadow-gray-600 rounded-md mt-80 h-56 flex flex-col p-4 pl-1 w-72 search-results">
                       {filteredData.map((item) => (
                         <li onClick={() => { setFrom(item.location.split(',')[0]); setFilteredData([]); setFiata(item.iata); setIsFocus(false) }} key={item._id} className='bg-white mb-1 cursor-pointer bg-opacity-0 transition-all duration-300 ease-in-out hover:bg-opacity-20 hover:scale-105'><h1><img src={listl} alt="" className='h-6 w-6 mr-1 rounded-full inline-block' />{item.name}</h1><h4 className='ml-7 text-sm'>{item.location}</h4></li>))}
                     </ul>)}
@@ -234,7 +234,7 @@ const Add = () => {
               <div ref={input2} className='flex flex-col mt-3 ml-4  h-20 justify-center items-center'>
               
               <label className='font-semibold self-start'  >To iata</label>
-                <input value={tiata ? tiata : ''} className=' relative p-1  focus:outline-purple-800 pl-5 border-[2px] border-purple-600 h-10 rounded-md w-[14rem]' ></input>
+                <input value={tiata ? tiata : ''} className=' relative p-1  focus:outline-purple-800 pl-5 border-[2px] border-orange-600 h-10 rounded-md w-[14rem]' ></input>
                 <div className={`flex  absolute items-center w-0 transition-all -z-10 duration-300 ease-in-out transform ${isFocusp ? 'mt-32 ml-10 rounded-md z-10 bg-gray-100 px-3 py-2 w-72 shadow-sm ' : ''}`}>
                   <svg
                     className="w-5 h-5 text-gray-400 mr-2"
@@ -256,7 +256,7 @@ const Add = () => {
                     onChange={(event) => handleSearchChange(event, 't')}
                   />
                   {searchTo && isFocusp && (
-                    <ul className="absolute overflow-scroll bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg shadow-gray-600 rounded-md mt-80 flex flex-col p-4 w-72 h-56 search-results">
+                    <ul className="absolute overflow-scroll bg-gradient-to-r from-yellow-500 to-orange-500 shadow-lg shadow-gray-600 rounded-md mt-80 flex flex-col p-4 w-72 h-56 search-results">
                       {filteredData.map((item) => (
                         <li onClick={() => { setTo(item.location.split(',')[0]); setFilteredData([]); setTiata(item.iata); setIsFocusp(false) }} key={item._id} className='bg-white cursor-pointer mb-1 bg-opacity-0 transition-all duration-300 ease-in-out hover:bg-opacity-20 hover:scale-105'><h1><img src={listl} alt="" className='h-6 w-6 mr-1 rounded-full inline-block' />{item.name}</h1><h4 className='text-sm'>{item.location}</h4></li>
                       ))}
@@ -280,7 +280,7 @@ const Add = () => {
       }
       <div className='w-96 h-14 mt-3 flex flex-col'>
         <label className='font-semibold mr-4' for='company'>Enter number of Rows</label>
-        <input value={row} onChange={(e)=>setRow(e.target.value)} className='h-12 border-2 border-purple-600 rounded-md px-2 w-96' id='company' type='text' />
+        <input value={row} onChange={(e)=>setRow(e.target.value)} className='h-12 border-2 border-orange-600 rounded-md px-2 w-96' id='company' type='text' />
         </div>
       
      

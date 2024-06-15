@@ -1,5 +1,5 @@
 import React from 'react'
-import staff from './staff.jpg'
+import staff from './company-login.png'
 import user from './user.jpg'
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
@@ -75,7 +75,7 @@ const Login = () => {
   return (
     <>
     
-    <div className="h-screen w-full bg-gradient-to-r from-purple-500 to-pink-500 flex flex-row items-center justify-center ">
+    <div className="h-screen w-full bg-gradient-to-r from-yellow-400 to-orange-400 flex flex-row items-center justify-center ">
       <div className="h-[75vh] w-[70vw] bg-white rounded-[2rem] shadow-2xl shadow-black flex  p-3">
           <img src={staff} className='h-full w-[28rem] rounded-l-3xl'/>
           <form onSubmit={(e)=>handleSubmit(e)} className='h-full w-[22rem] ml-28 rounded-r-3xl flex flex-col justify-center items-center '>
