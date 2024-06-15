@@ -205,7 +205,7 @@ const Home = () => {
 
                 />
                 {searchTerm&&isFocus&& (
-        <ul className="absolute overflow-y-scroll bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg shadow-gray-600 rounded-md mt-80 h-56 flex flex-col p-4 pl-1 w-72 search-results">
+        <ul className="absolute overflow-y-scroll bg-gradient-to-r from-orange-500 to-yellow-500 shadow-lg shadow-gray-600 rounded-md mt-80 h-56 flex flex-col p-4 pl-1 w-72 search-results">
           {filteredData.map((item) => (
             <li  onClick={()=>{setFrom(item.name); setFilteredData([]);setFiata(item.iata); setIsFocus(false)}} key={item._id} className='bg-white mb-1 cursor-pointer bg-opacity-0 transition-all duration-300 ease-in-out hover:bg-opacity-20 hover:scale-105'><h1><img src={listl} className='h-6 w-6 mr-1 rounded-full inline-block'/>{item.name}</h1><h4 className='ml-7 text-sm'>{item.location}</h4></li>          ))}
         </ul>)}

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import user from './user.jpg'
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import api from '../API/api.js'
 import Navbar from '../Navbar/Navbar.js'
 import { useNavigate } from 'react-router-dom';
@@ -127,6 +127,35 @@ const SignIn = () => {
       }
            
 }
+const check=()=>{
+  const token = localStorage.getItem('token')
+  if (!token) {
+    // navigate("/")
+  } else {
+    api.get('/logged', {
+      headers: {
+        Authorization: token
+      }
+    }).then(res => {
+
+      if (res.data.success) {
+        navigate('/')
+
+
+
+      } else {
+        localStorage.removeItem('token')
+        // navigate("/")
+
+      }
+    }).catch((err) => {
+      localStorage.removeItem('token')
+      // navigate("/")
+
+    })
+  }
+}
+useEffect(() => check(), [])
   return (
     <div>
       <Navbar/>

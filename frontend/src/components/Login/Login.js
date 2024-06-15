@@ -3,7 +3,8 @@ import flight from './flight-4.jpg'
 import user from './user.jpg'
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { useRef } from 'react';
+import { useRef,useEffect } from 'react';
+// import { useRef } from 'react';
 import Navbar from '../Navbar/Navbar.js'
 import api from '../API/api.js'
 import { useNavigate } from 'react-router-dom';
@@ -36,13 +37,42 @@ const Login = () => {
             'Content-Type': 'application/json'
         }
     }).then((user)=>{
-        //console.log(user)
+        console.log(user)
         localStorage.setItem('token',user.data.token)
         navigate("/")
         
       }).catch(err=>window.alert('Something went wrong! Try again with correct credentials'))
          
 }
+const check=()=>{
+  const token = localStorage.getItem('token')
+  if (!token) {
+    // navigate("/")
+  } else {
+    api.get('/logged', {
+      headers: {
+        Authorization: token
+      }
+    }).then(res => {
+
+      if (res.data.success) {
+        navigate('/')
+
+
+
+      } else {
+        localStorage.removeItem('token')
+        // navigate("/")
+
+      }
+    }).catch((err) => {
+      localStorage.removeItem('token')
+      // navigate("/")
+
+    })
+  }
+}
+useEffect(() => check(), [])
   return (
     <><Navbar/>
     <div className='h-[4.2rem]'></div>

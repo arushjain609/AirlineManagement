@@ -4,11 +4,11 @@ const Booking = () => {
   return (
     <div>
         <Navbar/>
-     <div className="flex justify-center items-center h-screen bg-gradient-to-r from-purple-500 to-pink-500">
+     <div className="flex justify-center items-center h-screen bg-gradient-to-r from-orange-500 to-yellow-500">
         
-    <div className="container mt-5 ">
+    <div className="container mt-5 bg-gray-100 shadow-lg shadow-gray-600 rounded-lg px-8 pt-6 pb-8 mb-8 mx-auto">
         
-      <div className="card shadow-lg shadow-gray-600 rounded px-8 pt-6 pb-8 mb-8 mx-auto">
+      <div className="card ">
         <div className="card-header">
           <h3 className="text-gray-700 font-bold text-xl">Flight Booking Confirmation</h3>
         </div>

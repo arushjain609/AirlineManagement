@@ -237,7 +237,7 @@ const Profile = () => {
        </div>
       </div>
       </div>}
-    <div className='flex px-32 py-16 flex-row bg-gradient-to-r from-purple-500 to-pink-500'>
+    <div className='flex px-32 py-16 flex-row bg-gradient-to-r from-orange-500 to-yellow-500'>
 
       {/* <div className='cursor-pointer' onClick={()=>handleMail()}>
       Verify Email </div>
@@ -255,7 +255,7 @@ const Profile = () => {
             to="profile"
             spy={true}
             smooth={true}
-            offset={0}
+            offset={-200}
             duration={500}
             
           >
